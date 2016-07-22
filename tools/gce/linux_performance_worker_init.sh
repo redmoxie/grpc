@@ -69,6 +69,10 @@ sudo apt-get install -y \
   python-pip \
   python-setuptools \
   python-yaml \
+  python3-dev \
+  python3-pip \
+  python3-setuptools \
+  python3-yaml \
   telnet \
   unzip \
   wget \
@@ -77,24 +81,29 @@ sudo apt-get install -y \
 # perftools
 sudo apt-get install -y google-perftools libgoogle-perftools-dev
 
+# netperf
+sudo apt-get install -y netperf
+
 # C++ dependencies
 sudo apt-get install -y libgflags-dev libgtest-dev libc++-dev clang
 
 # Python dependencies
 sudo pip install tabulate
 sudo pip install google-api-python-client
-sudo pip install tox
 
 curl -O https://bootstrap.pypa.io/get-pip.py
 sudo pypy get-pip.py
 sudo pypy -m pip install tabulate
 sudo pip install google-api-python-client
-sudo pip install tox
 
 # Node dependencies (nvm has to be installed under user jenkins)
 touch .profile
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.4/install.sh | bash
+source ~/.nvm/nvm.sh
 nvm install 0.12 && npm config set cache /tmp/npm-cache
+nvm install 4 && npm config set cache /tmp/npm-cache
+nvm install 5 && npm config set cache /tmp/npm-cache
+nvm alias default 4
 
 # C# dependencies (http://www.mono-project.com/docs/getting-started/install/linux/#debian-ubuntu-and-derivatives)
 
@@ -112,3 +121,6 @@ source ~/.rvm/scripts/rvm
 gem install bundler
 
 # Java dependencies - nothing as we already have Java JDK 8
+
+# Go dependencies
+sudo apt-get install -y golang-go
